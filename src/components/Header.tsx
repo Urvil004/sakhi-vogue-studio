@@ -23,13 +23,13 @@ const Header = () => {
             <img 
               src={logoIcon} 
               alt="Sakhi Designer Studio" 
-              className="h-15 w-30 sm:h-20 sm:w-30 md:w-35 object-contain" 
+              className="h-16 w-24 sm:h-20 sm:w-28 md:h-24 md:w-32 object-contain mix-blend-multiply" 
             />
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Sakhi Designer Studio
               </span>
-              <span className="text-xs sm:text-sm text-muted-foreground">Crafting Elegance Since 2004</span>
+              <span className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">Crafting Elegance Since 2004</span>
             </div>
           </Link>
 
