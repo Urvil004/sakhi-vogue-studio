@@ -17,13 +17,13 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex h-20 items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 transition-transform hover:scale-105">
+          <Link to="/" className="flex items-center gap-1 transition-transform hover:scale-105">
             <img 
               src={logoIcon} 
               alt="Sakhi Designer Studio" 
-              className="h-16 w-24 sm:h-20 sm:w-28 md:h-24 md:w-32 object-contain mix-blend-multiply" 
+              className="h-16 w-24 sm:h-20 sm:w-28 md:h-20 md:w-32 object-contain mix-blend-multiply -mr-2" 
             />
             <div className="flex flex-col">
               <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
