@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import logoIcon from "@/assets/logo-icon.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAdmin } = useAuth();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -44,6 +46,15 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full flex items-center gap-1"
+              >
+                <Shield size={16} />
+                Admin
+              </Link>
+            )}
             <Button size="sm" className="ml-4">Get Quote</Button>
           </nav>
 
@@ -70,6 +81,16 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-2 py-3 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Shield size={16} />
+                Admin
+              </Link>
+            )}
             <Button size="sm" className="w-full mt-4" asChild>
               <Link to="/contact">Get Quote</Link>
             </Button>
