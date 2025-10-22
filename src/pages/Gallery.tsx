@@ -1,18 +1,74 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
-import { Instagram } from "lucide-react";
+import { Instagram, Loader2 } from "lucide-react";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import InstagramSection from "@/components/gallery/InstagramSection";
-import { galleryImages, getCategoryCounts } from "@/data/galleryImages";
 
-const categories = ["All", "Blouses", "Wedding Wear", "Gowns", "Embroidery", "Dresses"];
+const categories = ["All", "Blouses", "Wedding", "Gowns", "Embroidery", "Dresses"];
+
+interface GalleryImage {
+  id: string;
+  src?: string;
+  image_url: string;
+  title: string;
+  category: string;
+  description?: string | null;
+  tags?: string[];
+  uploaded_at?: string;
+  alt: string;
+  featured?: boolean;
+}
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const categoryCounts = getCategoryCounts();
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [categoryCounts, setCategoryCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const fetchImages = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('gallery_images')
+        .select('*')
+        .order('uploaded_at', { ascending: false });
+
+      if (error) throw error;
+
+      const dbImages = (data || []).map(img => ({
+        id: img.id,
+        src: img.image_url,
+        image_url: img.image_url,
+        title: img.title,
+        category: img.category,
+        description: img.description,
+        tags: img.tags,
+        uploaded_at: img.uploaded_at,
+        alt: img.title,
+        featured: img.featured || false
+      }));
+
+      setImages(dbImages);
+
+      // Calculate category counts
+      const counts: Record<string, number> = { All: dbImages.length };
+      dbImages.forEach(img => {
+        counts[img.category] = (counts[img.category] || 0) + 1;
+      });
+      setCategoryCounts(counts);
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -57,10 +113,13 @@ const Gallery = () => {
         {/* Gallery Grid */}
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <GalleryGrid images={galleryImages} selectedCategory={selectedCategory} />
-
-            {/* Developer Note */}
-            
+            {loading ? (
+              <div className="flex items-center justify-center py-12">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              </div>
+            ) : (
+              <GalleryGrid images={images} selectedCategory={selectedCategory} />
+            )}
           </div>
         </section>
 

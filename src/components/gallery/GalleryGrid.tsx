@@ -1,5 +1,17 @@
 import { useState } from "react";
-import { GalleryImage } from "@/data/galleryImages";
+
+interface GalleryImage {
+  id: string;
+  src?: string;
+  image_url: string;
+  title: string;
+  category: string;
+  description?: string | null;
+  tags?: string[];
+  uploaded_at?: string;
+  alt: string;
+  featured?: boolean;
+}
 
 interface GalleryGridProps {
   images: GalleryImage[];
@@ -75,14 +87,14 @@ const GalleryGrid = ({ images, selectedCategory }: GalleryGridProps) => {
           >
             <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 bg-card">
               <img
-                src={image.src}
+                src={image.src || image.image_url}
                 alt={image.alt}
                 loading="lazy"
                 className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src = "https://placehold.co/400x600/e91e63/ffffff/png?text=Image+Not+Found";
-                  console.error("Failed to load:", image.src);
+                  console.error("Failed to load:", image.src || image.image_url);
                 }}
               />
               
@@ -153,7 +165,7 @@ const GalleryGrid = ({ images, selectedCategory }: GalleryGridProps) => {
           {/* Image Container */}
           <div className="max-w-5xl w-full max-h-[85vh] flex flex-col items-center">
             <img 
-              src={selectedImage.src} 
+              src={selectedImage.src || selectedImage.image_url} 
               alt={selectedImage.alt}
               className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl animate-scale-in"
               onClick={(e) => e.stopPropagation()}
