@@ -24,8 +24,14 @@ const Login = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await signIn(email, password);
+    console.log('Attempting login...');
+    const { error, isAdmin } = await signIn(email, password);
     setLoading(false);
+    
+    if (!error && isAdmin) {
+      console.log('Login successful, redirecting to admin dashboard...');
+      navigate('/admin');
+    }
   };
 
   const handleSignUp = async (e: React.FormEvent) => {

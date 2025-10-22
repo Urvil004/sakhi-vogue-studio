@@ -12,39 +12,37 @@ export const useAuth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check for existing session first
+    const initAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (session?.user) {
+        const { data } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', session.user.id)
+          .eq('role', 'admin')
+          .maybeSingle();
+        
+        setIsAdmin(!!data);
+      }
+      
+      setLoading(false);
+    };
+
+    initAuth();
+
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        console.log('Auth state changed:', event, session?.user?.email);
         setSession(session);
         setUser(session?.user ?? null);
         
         // Check admin status when user logs in
         if (session?.user) {
-          setTimeout(async () => {
-            const { data } = await supabase
-              .from('user_roles')
-              .select('role')
-              .eq('user_id', session.user.id)
-              .eq('role', 'admin')
-              .maybeSingle();
-            
-            setIsAdmin(!!data);
-          }, 0);
-        } else {
-          setIsAdmin(false);
-        }
-        
-        setLoading(false);
-      }
-    );
-
-    // Check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        setTimeout(async () => {
           const { data } = await supabase
             .from('user_roles')
             .select('role')
@@ -52,13 +50,15 @@ export const useAuth = () => {
             .eq('role', 'admin')
             .maybeSingle();
           
+          console.log('Admin check result:', data);
           setIsAdmin(!!data);
-          setLoading(false);
-        }, 0);
-      } else {
+        } else {
+          setIsAdmin(false);
+        }
+        
         setLoading(false);
       }
-    });
+    );
 
     return () => subscription.unsubscribe();
   }, []);
@@ -91,7 +91,7 @@ export const useAuth = () => {
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -102,9 +102,31 @@ export const useAuth = () => {
         description: error.message,
         variant: "destructive"
       });
+      return { error, isAdmin: false };
     }
     
-    return { error };
+    console.log('Login successful:', data.user?.email);
+    
+    // Check if user has admin role
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', data.user.id)
+      .eq('role', 'admin')
+      .maybeSingle();
+    
+    const hasAdminRole = !!roleData;
+    console.log('User has admin role:', hasAdminRole);
+    
+    if (!hasAdminRole) {
+      toast({
+        title: "Access Denied",
+        description: "You don't have admin privileges. Contact administrator.",
+        variant: "destructive"
+      });
+    }
+    
+    return { error: null, isAdmin: hasAdminRole };
   };
 
   const signOut = async () => {
