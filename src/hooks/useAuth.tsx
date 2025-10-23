@@ -18,19 +18,41 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Check user role from database
+  // Check user role from database with timeout
   const checkAdminRole = async (userId: string): Promise<boolean> => {
     try {
       console.log('Checking admin role for user:', userId);
       
-      const { data, error } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', userId)
-        .single();
+      // Create a timeout promise
+      const timeoutPromise = new Promise<null>((_, reject) => {
+        setTimeout(() => reject(new Error('Admin role check timeout')), 10000); // 10 second timeout
+      });
+      
+      // Race between the query and timeout
+      const result = await Promise.race([
+        supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', userId)
+          .single(),
+        timeoutPromise
+      ]);
+
+      // Handle timeout
+      if (result === null) {
+        console.error('Admin role check timed out');
+        return false;
+      }
+
+      const { data, error } = result as any;
 
       if (error) {
         console.error('Error checking admin role:', error);
+        // If row doesn't exist, user is not admin
+        if (error.code === 'PGRST116') {
+          console.log('No role found for user - not admin');
+          return false;
+        }
         return false;
       }
 
