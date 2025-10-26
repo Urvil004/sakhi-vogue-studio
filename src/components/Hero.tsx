@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-sewing-aesthetic.jpg";
 
-
 const Hero = () => {
   return (
     <section className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden">
@@ -25,10 +24,11 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl animate-fade-in">
-          {/* Badge with updated styling */}
+        {/* FIXED: Added padding-top on mobile only to move content down */}
+        <div className="max-w-3xl animate-fade-in pt-8 sm:pt-0">
+          {/* Badge with updated styling - FIXED: Added margin-top on mobile */}
           <div 
-            className="inline-block mb-6 px-5 py-2 rounded-full border"
+            className="inline-block mb-6 mt-4 sm:mt-0 px-5 py-2 rounded-full border"
             style={{
               background: 'rgba(255, 215, 186, 0.25)',
               backdropFilter: 'blur(10px)',
@@ -52,7 +52,7 @@ const Hero = () => {
             <span 
               className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent animate-shimmer bg-[length:200%_100%]"
             >
-            -Sab Kuch Yahan
+            -Sab Kuch Yahan
           </span>
           </h1>
           
@@ -64,7 +64,7 @@ const Hero = () => {
               color: 'rgba(255, 255, 255, 0.95)'
             }}
           >
-           Sakhi Designer Studio makes custom outfits for weddings and special occasions. We design bridal lehengas, blouses, and party wear that fit you perfectly. Your vision becomes reality with precision and personal attention.
+           Sakhi Designer Studio makes custom outfits for weddings and special occasions. We design bridal lehengas, blouses, and party wear that fit you perfectly. Your vision becomes reality with precision and personal attention.
           </p>
 
           {/* Buttons with gold accent and white outline */}
@@ -114,36 +114,38 @@ const Hero = () => {
             </Link>
           </div>
 
-          {/* Stats section with enhanced visibility */}
-          <div className="mt-12 flex flex-wrap gap-8 sm:gap-12">
-            <div 
-              className="px-4 py-3 rounded-lg" 
-              style={{ background: 'rgba(255, 255, 255, 0.1)' }}
-            >
-              <div className="text-4xl font-serif font-bold text-white mb-1">1000+</div>
-              <div className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                Happy Customers
-              </div>
-            </div>
-            <div 
-              className="px-4 py-3 rounded-lg" 
-              style={{ background: 'rgba(255, 255, 255, 0.1)' }}
-            >
-              <div className="text-4xl font-serif font-bold text-white mb-1">20+</div>
-              <div className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                Years Experience
-              </div>
-            </div>
-            <div 
-              className="px-4 py-3 rounded-lg" 
-              style={{ background: 'rgba(255, 255, 255, 0.1)' }}
-            >
-              <div className="text-4xl font-serif font-bold text-white mb-1">100%</div>
-              <div className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                Satisfaction
-              </div>
-            </div>
-          </div>
+          {/* Stats section - FIXED: All 3 boxes in single column on mobile, row on desktop */}
+      {/* Stats section - FIXED: More top margin on mobile */}
+<div className="mt-8 sm:mt-12 flex flex-row justify-center sm:justify-start gap-3 sm:gap-8 md:gap-12">
+  <div 
+    className="px-3 py-2 sm:px-4 sm:py-3 rounded-lg flex-1 max-w-[110px] sm:max-w-none" 
+    style={{ background: 'rgba(255, 255, 255, 0.1)' }}
+  >
+    <div className="text-2xl sm:text-4xl font-serif font-bold text-white mb-1">1000+</div>
+    <div className="text-xs sm:text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+      Happy Customers
+    </div>
+  </div>
+  <div 
+    className="px-3 py-2 sm:px-4 sm:py-3 rounded-lg flex-1 max-w-[110px] sm:max-w-none" 
+    style={{ background: 'rgba(255, 255, 255, 0.1)' }}
+  >
+    <div className="text-2xl sm:text-4xl font-serif font-bold text-white mb-1">20+</div>
+    <div className="text-xs sm:text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+      Years Experience
+    </div>
+  </div>
+  <div 
+    className="px-3 py-2 sm:px-4 sm:py-3 rounded-lg flex-1 max-w-[110px] sm:max-w-none" 
+    style={{ background: 'rgba(255, 255, 255, 0.1)' }}
+  >
+    <div className="text-2xl sm:text-4xl font-serif font-bold text-white mb-1">100%</div>
+    <div className="text-xs sm:text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+      Satisfaction
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
