@@ -27,9 +27,9 @@ const WhyChooseUs = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Sakhi Designer Studio?</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4 text-foreground">Why Choose Sakhi Designer Studio?</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Experience the perfect blend of tradition, craftsmanship, and modern design excellence.
           </p>
         </div>
@@ -43,11 +43,11 @@ const WhyChooseUs = () => {
                 className="text-center animate-scale-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="inline-flex p-4 rounded-full bg-gradient-to-br from-primary to-accent mb-4">
-                  <Icon className="h-8 w-8 text-white" />
+                <div className="inline-flex p-5 rounded-full bg-gradient-to-br from-primary to-secondary mb-5 shadow-md">
+                  <Icon className="h-9 w-9 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
+                <h3 className="font-serif text-2xl font-semibold mb-3 text-foreground">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             );
           })}

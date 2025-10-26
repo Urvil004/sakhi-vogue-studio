@@ -37,11 +37,11 @@ const services = [
 
 const ServicesOverview = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary/30">
+    <section className="py-20 bg-gradient-to-b from-background to-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4 text-foreground">Our Services</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             From traditional to contemporary, we offer a complete range of tailoring services 
             designed to meet your unique style needs.
           </p>
@@ -53,17 +53,17 @@ const ServicesOverview = () => {
             return (
               <Card
                 key={index}
-                className="group hover:shadow-lg transition-all duration-300 hover:scale-105 border-border/50 animate-scale-in"
+                className="group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-border bg-card animate-scale-in rounded-xl"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-6">
-                  <div className="mb-4 inline-flex p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
-                    <Icon className="h-6 w-6 text-primary" />
+                <CardContent className="p-8">
+                  <div className="mb-5 inline-flex p-4 rounded-xl bg-gradient-to-br from-primary/15 to-secondary/15 group-hover:from-primary/25 group-hover:to-secondary/25 transition-all duration-300">
+                    <Icon className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-serif text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
                 </CardContent>
@@ -72,13 +72,13 @@ const ServicesOverview = () => {
           })}
         </div>
 
-        <div className="text-center">
+        <div className="text-center mt-12">
           <Link
             to="/services"
-            className="inline-flex items-center text-primary font-medium hover:underline"
+            className="inline-flex items-center text-accent font-semibold hover:text-gold-dark transition-colors text-lg"
           >
             View All Services & Pricing
-            <span className="ml-2">→</span>
+            <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
           </Link>
         </div>
       </div>

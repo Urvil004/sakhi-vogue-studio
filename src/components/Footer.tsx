@@ -4,19 +4,19 @@ import logoIcon from "@/assets/logo-icon.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-background to-secondary/30 border-t border-border/40">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-charcoal border-t border-primary/20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img src={logoIcon} alt="Sakhi Designer Studio" className="h-10 w-10" />
               <div>
-                <h3 className="font-bold text-lg">Sakhi Designer Studio</h3>
-                <p className="text-xs text-muted-foreground">Since 2004</p>
+                <h3 className="font-serif font-bold text-lg text-warm-white">Sakhi Designer Studio</h3>
+                <p className="text-xs text-white/60">Since 2004</p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-white/70 mb-6 leading-relaxed">
               Crafting elegant custom tailoring for over 20 years in Ahmedabad.
             </p>
             <div className="flex gap-3">
@@ -24,49 +24,49 @@ const Footer = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-white/10 hover:bg-accent hover:text-white transition-all duration-300"
                 aria-label="Instagram"
               >
-                <Instagram size={18} />
+                <Instagram size={20} />
               </a>
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-white/10 hover:bg-accent hover:text-white transition-all duration-300"
                 aria-label="Facebook"
               >
-                <Facebook size={18} />
+                <Facebook size={20} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-semibold mb-6 text-warm-white">Quick Links</h4>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/" className="text-white/70 hover:text-primary transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/services" className="text-white/70 hover:text-primary transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/gallery" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/gallery" className="text-white/70 hover:text-primary transition-colors">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/about" className="text-white/70 hover:text-primary transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/contact" className="text-white/70 hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -75,20 +75,20 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Info</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <MapPin size={16} className="mt-1 flex-shrink-0 text-primary" />
+            <h4 className="font-semibold mb-6 text-warm-white">Contact Info</h4>
+            <ul className="space-y-4 text-sm text-white/70">
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="mt-1 flex-shrink-0 text-accent" />
                 <span>Sakhi ladies tailor, VISHWAS CITY-2, 53, behind R.C. Technical Road, Vishwas City 2, Chanakyapuri, Ahmedabad, Gujarat 380061</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone size={16} className="flex-shrink-0 text-primary" />
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="flex-shrink-0 text-accent" />
                 <a href="tel:+919898970397" className="hover:text-primary transition-colors">
                   +91 98989 70397
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail size={16} className="flex-shrink-0 text-primary" />
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="flex-shrink-0 text-accent" />
                 <a href="mailto:sakhidesignerstudio53@gmail.com" className="hover:text-primary transition-colors">
                   sakhidesignerstudio53@gmail.com
                 </a>
@@ -98,20 +98,20 @@ const Footer = () => {
 
           {/* Business Hours */}
           <div>
-            <h4 className="font-semibold mb-4">Business Hours</h4>
-            <div className="flex items-start gap-2 text-sm text-muted-foreground mb-3">
-              <Clock size={16} className="mt-1 flex-shrink-0 text-primary" />
+            <h4 className="font-semibold mb-6 text-warm-white">Business Hours</h4>
+            <div className="flex items-start gap-3 text-sm text-white/70 mb-3">
+              <Clock size={18} className="mt-1 flex-shrink-0 text-accent" />
               <div>
-                <p className="font-medium text-foreground">Monday - Sunday</p>
+                <p className="font-semibold text-warm-white">Monday - Sunday</p>
                 <p>9:00 AM - 10:00 PM</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border/40 text-center text-sm text-muted-foreground">
+        <div className="pt-8 border-t border-white/10 text-center text-sm text-white/60">
           <p>&copy; {new Date().getFullYear()} Sakhi Designer Studio. All rights reserved.</p>
-          <p className="mt-1">Crafting Elegance Since 2004</p>
+          <p className="mt-2 font-serif text-white/80">Crafting Elegance Since 2004</p>
         </div>
       </div>
     </footer>

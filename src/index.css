@@ -8,75 +8,93 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 340 15% 20%;
+    /* Soft Cream/Linen backgrounds */
+    --background: 40 33% 98%;
+    --foreground: 0 0% 17%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 340 15% 20%;
+    /* Card backgrounds - Light terracotta tint */
+    --card: 14 100% 98%;
+    --card-foreground: 0 0% 17%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 340 15% 20%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 0 0% 17%;
 
-    /* Sophisticated rose pink */
-    --primary: 340 65% 55%;
+    /* Warm Terracotta - Main brand color */
+    --primary: 14 42% 71%;
     --primary-foreground: 0 0% 100%;
 
-    /* Soft blush */
-    --secondary: 345 50% 95%;
-    --secondary-foreground: 340 15% 20%;
+    /* Sage Green - Secondary color */
+    --secondary: 90 23% 61%;
+    --secondary-foreground: 0 0% 17%;
 
-    --muted: 345 30% 96%;
-    --muted-foreground: 340 10% 45%;
+    /* Soft backgrounds with sage tint */
+    --muted: 90 20% 96%;
+    --muted-foreground: 0 0% 46%;
 
-    /* Luxurious gold */
-    --accent: 40 85% 60%;
-    --accent-foreground: 340 15% 20%;
+    /* Warm Gold - Accent/CTA color */
+    --accent: 43 90% 38%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 345 20% 90%;
-    --input: 345 20% 90%;
-    --ring: 340 65% 55%;
+    /* Terracotta borders */
+    --border: 14 30% 88%;
+    --input: 14 30% 88%;
+    --ring: 14 42% 71%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(340 65% 55%), hsl(40 85% 60%));
-    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%), hsl(345 50% 98%));
-    --shadow-elegant: 0 10px 40px -10px hsl(340 65% 55% / 0.2);
-    --shadow-card: 0 4px 20px -2px hsl(340 20% 50% / 0.1);
+    /* Custom design tokens - Sophisticated palette */
+    --gradient-primary: linear-gradient(135deg, hsl(14 42% 71% / 0.85), hsl(90 23% 61% / 0.75));
+    --gradient-hero: linear-gradient(135deg, rgba(212, 165, 154, 0.85), rgba(156, 175, 136, 0.75));
+    --gradient-cta: linear-gradient(135deg, hsl(43 90% 38%), hsl(43 80% 32%));
+    --gradient-soft: linear-gradient(180deg, hsl(40 33% 98%), hsl(14 100% 98%));
+    --shadow-elegant: 0 10px 40px -10px hsl(14 42% 71% / 0.25);
+    --shadow-card: 0 4px 20px -2px hsl(14 30% 60% / 0.12);
+    --shadow-hover: 0 12px 28px -4px hsl(14 42% 71% / 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Additional color tokens */
+    --terracotta: 14 42% 71%;
+    --terracotta-deep: 14 38% 62%;
+    --sage: 90 23% 61%;
+    --sage-light: 90 20% 96%;
+    --gold: 43 90% 38%;
+    --gold-dark: 43 80% 32%;
+    --charcoal: 0 0% 17%;
+    --warm-white: 60 100% 97%;
+    --warm-gray: 0 0% 29%;
   }
 
   .dark {
-    --background: 340 15% 10%;
-    --foreground: 345 30% 95%;
+    --background: 0 0% 17%;
+    --foreground: 60 100% 97%;
 
-    --card: 340 15% 12%;
-    --card-foreground: 345 30% 95%;
+    --card: 0 0% 20%;
+    --card-foreground: 60 100% 97%;
 
-    --popover: 340 15% 12%;
-    --popover-foreground: 345 30% 95%;
+    --popover: 0 0% 20%;
+    --popover-foreground: 60 100% 97%;
 
-    --primary: 340 65% 60%;
+    --primary: 14 42% 71%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 20% 18%;
-    --secondary-foreground: 345 30% 95%;
+    --secondary: 90 23% 61%;
+    --secondary-foreground: 0 0% 17%;
 
-    --muted: 340 20% 18%;
-    --muted-foreground: 345 15% 65%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 40 85% 65%;
-    --accent-foreground: 340 15% 10%;
+    --accent: 43 90% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 345 30% 95%;
+    --destructive-foreground: 60 100% 97%;
 
-    --border: 340 20% 20%;
-    --input: 340 20% 20%;
-    --ring: 340 65% 60%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 14 42% 71%;
   }
 }
 
