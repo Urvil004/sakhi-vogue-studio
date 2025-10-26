@@ -28,16 +28,34 @@ const InstagramSection = () => {
           </p>
           
           {/* CTA Button */}
-          <Button size="lg" className="gap-3 shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-10 py-6" asChild>
-            <a
-              href="https://www.instagram.com/sakhidesignerstudio53/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Instagram className="h-6 w-6" />
-              Follow @sakhidesignerstudio53
-            </a>
-          </Button>
+         <Button 
+  size="lg" 
+  className="gap-3 shadow-2xl transition-all duration-300 text-lg px-10 py-6" 
+  asChild
+  style={{
+    background: 'linear-gradient(135deg, #D4A574 0%, #B8924E 100%)',
+    color: '#2C2C2C',
+    border: 'none'
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.background = 'linear-gradient(135deg, #B8924E 0%, #9A7A3E 100%)';
+    e.currentTarget.style.transform = 'scale(1.05)';
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.background = 'linear-gradient(135deg, #D4A574 0%, #B8924E 100%)';
+    e.currentTarget.style.transform = 'scale(1)';
+  }}
+>
+  <a
+    href="https://www.instagram.com/sakhidesignerstudio53/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Instagram className="h-6 w-6" />
+    Follow @sakhidesignerstudio53
+  </a>
+</Button>
+
         </div>
 
         {/* Instagram Feed Grid */}
