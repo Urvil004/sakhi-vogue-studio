@@ -3,23 +3,23 @@ import { Award, Clock, Users, Heart } from "lucide-react";
 const features = [
   {
     icon: Award,
-    title: "20+ Years Expertise",
-    description: "Two decades of mastering the art of custom tailoring with thousands of satisfied customers.",
+    title: "20+ Years of Experience",
+    description: "We have been creating beautiful custom outfits for over two decades. Thousands of happy customers trust us for their special occasions.",
   },
   {
     icon: Clock,
-    title: "Timely Delivery",
-    description: "We value your time and ensure your outfits are ready when you need them.",
+    title: "Always On Time",
+    description: "Your outfit will be ready when you need it. We respect your time and keep our promises.",
   },
   {
     icon: Users,
-    title: "Expert Artisans",
-    description: "Our skilled team brings years of experience and passion to every stitch.",
+    title: "Skilled Tailors",
+    description: "Our team has years of training and experience. We bring care and attention to every stitch we make.",
   },
   {
     icon: Heart,
-    title: "Customer Satisfaction",
-    description: "Your happiness is our priority. We work closely with you to achieve the perfect fit and style.",
+    title: "We Make You Happy",
+    description: "Your happiness is most important to us. We work closely with you to create the perfect fit and style you want.",
   },
 ];
 

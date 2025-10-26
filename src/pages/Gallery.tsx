@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Loader2, AlertCircle } from "lucide-react";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import InstagramSection from "@/components/gallery/InstagramSection";
+import galleryHeroBg from "@/assets/gallery-hero-bg.jpg";
 
 const categories = ["All", "Blouses", "Wedding", "Gowns", "Embroidery", "Dresses"];
 
@@ -69,20 +70,16 @@ const Gallery = () => {
           data.map(async (img) => {
             let imageUrl = img.image_url;
             
-            // Check if the URL is from Supabase storage
             if (imageUrl.includes('supabase.co/storage')) {
               try {
-                // Extract the file path from the URL
                 const urlParts = imageUrl.split('/object/');
                 if (urlParts.length > 1) {
                   const pathParts = urlParts[1].split('/');
-                  // Remove 'public' or 'sign' from path
                   const cleanPath = pathParts.filter(p => p !== 'public' && p !== 'sign').slice(1).join('/');
                   
-                  // Try to get signed URL
                   const { data: signedData, error: signError } = await supabase.storage
                     .from('gallery')
-                    .createSignedUrl(cleanPath, 60 * 60 * 24); // Valid for 24 hours
+                    .createSignedUrl(cleanPath, 60 * 60 * 24);
                   
                   if (signedData?.signedUrl && !signError) {
                     imageUrl = signedData.signedUrl;
@@ -91,7 +88,6 @@ const Gallery = () => {
                 }
               } catch (urlError) {
                 console.warn('Could not generate signed URL for:', img.title, urlError);
-                // Continue with original URL
               }
             }
             
@@ -111,7 +107,6 @@ const Gallery = () => {
         );
       } catch (urlError) {
         console.error('Error processing image URLs:', urlError);
-        // Fallback: use original URLs
         processedImages = data.map(img => ({
           id: img.id,
           src: img.image_url,
@@ -148,32 +143,45 @@ const Gallery = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-b from-secondary/30 to-background py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section with Background */}
+        <section className="relative min-h-[300px] flex items-center justify-center overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url(${galleryHeroBg})`,
+              backgroundAttachment: 'fixed',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/70 to-charcoal/50" />
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Gallery</h1>
-              <p className="text-lg text-muted-foreground mb-6">
+              <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4 text-white">Our Gallery</h1>
+              <p className="text-lg text-white/90 mb-6">
                 Explore our collection of beautiful custom-tailored creations
               </p>
-              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <Instagram className="h-4 w-4 text-primary" />
+              <div className="flex items-center justify-center gap-2 text-sm text-white/80">
+                <Instagram className="h-4 w-4 text-accent" />
                 <span>For our complete portfolio, follow us on Instagram @sakhidesignerstudio53</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Category Filter */}
-        <section className="py-8 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10">
+        {/* Category Filter - FIXED STICKY */}
+        <section className="sticky top-0 z-50 py-4 border-b border-border/50 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/90 shadow-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap justify-center gap-3 overflow-x-auto pb-2">
+            <div className="flex flex-wrap justify-center gap-3">
               {categories.map((category) => (
                 <Button
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category)}
-                  className="transition-all whitespace-nowrap"
+                  className={`transition-all whitespace-nowrap rounded-full px-6 py-2.5 font-medium ${
+                    selectedCategory === category 
+                      ? "bg-primary text-white shadow-md" 
+                      : "border-2 border-primary/30 text-primary hover:bg-primary hover:text-white"
+                  }`}
                   aria-label={`Filter by ${category}`}
                   aria-pressed={selectedCategory === category}
                 >

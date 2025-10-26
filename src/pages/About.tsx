@@ -2,27 +2,28 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Award, Users, Heart, Clock } from "lucide-react";
+import aboutWorkspaceImg from "@/assets/about-workspace.jpg";
 
 const values = [
   {
     icon: Award,
-    title: "Quality Craftsmanship",
-    description: "Every stitch reflects our commitment to excellence and attention to detail.",
+    title: "Quality Work",
+    description: "Every stitch shows our care for making perfect clothes. We pay attention to small details.",
   },
   {
     icon: Clock,
-    title: "Timely Delivery",
-    description: "We respect your time and ensure your outfits are ready when promised.",
+    title: "On Time",
+    description: "We respect your time. Your outfit will be ready when we promise.",
   },
   {
     icon: Users,
     title: "Expert Team",
-    description: "Our skilled artisans bring decades of combined experience to every project.",
+    description: "Our tailors have many years of experience. They know how to create beautiful outfits.",
   },
   {
     icon: Heart,
-    title: "Customer First",
-    description: "Your satisfaction and happiness are at the heart of everything we do.",
+    title: "You Come First",
+    description: "Making you happy is our main goal. We listen to what you want and make it happen.",
   },
 ];
 
@@ -35,52 +36,69 @@ const About = () => {
         <section className="bg-gradient-to-b from-secondary/30 to-background py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+              <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">About Us</h1>
               <p className="text-lg text-muted-foreground">
-                Two decades of tradition, craftsmanship, and dedication to elegance
+                Twenty years of tradition, hard work, and beautiful designs
               </p>
             </div>
           </div>
         </section>
 
-        {/* Story Section */}
-        <section className="py-16">
+        {/* Story Section - Two Column Layout */}
+        <section className="py-16 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg max-w-none">
-                <h2 className="text-3xl font-bold mb-6 text-center">Our Story</h2>
-                <div className="bg-secondary/30 rounded-2xl p-8 mb-8">
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                    Established in 2004, <strong className="text-foreground">Sakhi Designer Studio</strong> has 
-                    been serving Ahmedabad's women with quality custom tailoring for over 20 years. What started 
-                    as a small tailoring shop in Ghatlodia has grown into a trusted name for bespoke fashion solutions.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                    Our journey began with a simple vision: to provide women with perfectly fitted, beautifully 
-                    crafted garments that celebrate their unique style. Over the years, we've had the privilege 
-                    of creating thousands of custom pieces, from everyday wear to wedding lehengas and designer gowns.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Today, we continue to blend traditional craftsmanship with contemporary design, offering a 
-                    complete range of tailoring services. Our experienced team of artisans takes pride in every 
-                    stitch, ensuring that each garment we create meets the highest standards of quality and elegance.
-                  </p>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+                {/* Left Column - Text (60%) */}
+                <div className="lg:col-span-3">
+                  <h2 className="font-serif text-3xl font-bold mb-6">Our Story</h2>
+                  
+                  <div className="prose prose-lg max-w-none">
+                    {/* Drop Cap S */}
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                      <span className="float-left font-serif text-7xl leading-none text-primary mr-3 mt-2">S</span>
+                      akhi Designer Studio started in 2004. We are a small tailoring shop in Ghatlodia, Ahmedabad. For over 20 years, we have been making beautiful clothes for women in our city.
+                    </p>
+                    
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                      We began with a simple idea: to give women perfectly fitted clothes that look beautiful and make them feel special. Over the years, we have made thousands of outfits – from everyday wear to wedding lehengas and party gowns.
+                    </p>
+                    
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                      Today, we mix old traditional methods with new modern designs. Our experienced team of tailors is proud of every piece we create. We make sure each outfit meets high standards of quality and beauty.
+                    </p>
+                    
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      We offer complete tailoring services for all your needs. From simple alterations to custom bridal wear, we do it all with care and skill.
+                    </p>
+                  </div>
                 </div>
+                
+                {/* Right Column - Image (40%) */}
+                <div className="lg:col-span-2">
+                  <div className="sticky top-24">
+                    <img 
+                      src={aboutWorkspaceImg} 
+                      alt="Vintage sewing machine in elegant tailoring workspace" 
+                      className="w-full h-auto rounded-xl shadow-xl object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
 
-                {/* Trust Badges */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                  <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
-                    <div className="text-4xl font-bold text-primary mb-2">20+</div>
-                    <div className="text-sm text-muted-foreground">Years Experience</div>
-                  </div>
-                  <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
-                    <div className="text-4xl font-bold text-primary mb-2">10,000+</div>
-                    <div className="text-sm text-muted-foreground">Happy Customers</div>
-                  </div>
-                  <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
-                    <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                    <div className="text-sm text-muted-foreground">Satisfaction</div>
-                  </div>
+              {/* Trust Badges */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
+                  <div className="text-4xl font-serif font-bold text-primary mb-2">20+</div>
+                  <div className="text-sm text-muted-foreground">Years Experience</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
+                  <div className="text-4xl font-serif font-bold text-primary mb-2">10,000+</div>
+                  <div className="text-sm text-muted-foreground">Happy Customers</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl">
+                  <div className="text-4xl font-serif font-bold text-primary mb-2">100%</div>
+                  <div className="text-sm text-muted-foreground">Satisfaction</div>
                 </div>
               </div>
             </div>
@@ -91,9 +109,9 @@ const About = () => {
         <section className="py-16 bg-gradient-to-b from-background to-secondary/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Our Values</h2>
+              <h2 className="font-serif text-3xl font-bold mb-4">What We Believe In</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                The principles that guide our work and define our commitment to you
+                These values guide our work every day
               </p>
             </div>
 
@@ -109,8 +127,8 @@ const About = () => {
                     <div className="inline-flex p-4 rounded-full bg-gradient-to-br from-primary to-accent mb-4">
                       <Icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                    <p className="text-muted-foreground text-sm">{value.description}</p>
+                    <h3 className="text-xl font-serif font-semibold mb-2">{value.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
                   </div>
                 );
               })}
@@ -122,9 +140,9 @@ const About = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-4">We Serve You Better</h2>
+              <h2 className="font-serif text-3xl font-bold mb-4">We Come to Your Door</h2>
               <p className="text-muted-foreground mb-8">
-                Doorstep services available across Ahmedabad
+                We provide home visit services across Ahmedabad
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 {["Ghatlodia", "Satellite", "Naranpura", "Gurukul", "Nearby Areas"].map((area) => (

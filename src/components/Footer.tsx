@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoIcon} alt="Sakhi Designer Studio" className="h-10 w-10" />
+              <img src={logoIcon} alt="Sakhi Designer Studio" className="h-14 w-auto object-contain" />
               <div>
                 <h3 className="font-serif font-bold text-lg text-warm-white">Sakhi Designer Studio</h3>
                 <p className="text-xs text-white/60">Since 2004</p>
@@ -75,21 +75,21 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-6 text-warm-white">Contact Info</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-semibold mb-6 text-warm-white text-base">Contact Info</h4>
+            <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-accent" />
-                <span>Sakhi ladies tailor, VISHWAS CITY-2, 53, behind R.C. Technical Road, Vishwas City 2, Chanakyapuri, Ahmedabad, Gujarat 380061</span>
+                <span className="text-white/80 hover:text-white transition-colors leading-relaxed">Sakhi ladies tailor, VISHWAS CITY-2, 53, behind R.C. Technical Road, Vishwas City 2, Chanakyapuri, Ahmedabad, Gujarat 380061</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="flex-shrink-0 text-accent" />
-                <a href="tel:+919898970397" className="hover:text-primary transition-colors">
+                <a href="tel:+919898970397" className="text-white/80 hover:text-white transition-colors">
                   +91 98989 70397
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="flex-shrink-0 text-accent" />
-                <a href="mailto:sakhidesignerstudio53@gmail.com" className="hover:text-primary transition-colors">
+                <a href="mailto:sakhidesignerstudio53@gmail.com" className="text-white/80 hover:text-white transition-colors break-all">
                   sakhidesignerstudio53@gmail.com
                 </a>
               </li>
