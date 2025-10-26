@@ -9,7 +9,6 @@ import serviceDesignerImg from "@/assets/service-designer.jpg";
 import serviceEmbroideryImg from "@/assets/service-embroidery.jpg";
 import serviceAlterationImg from "@/assets/service-alteration.jpg";
 
-
 const services = [
   {
     icon: Shirt,
@@ -74,12 +73,10 @@ const ServicesOverview = () => {
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 75) {
-      // Swipe left - next slide
       setCurrentSlide((prev) => (prev + 1) % services.length);
     }
 
     if (touchStart - touchEnd < -75) {
-      // Swipe right - previous slide
       setCurrentSlide((prev) => (prev - 1 + services.length) % services.length);
     }
   };
@@ -87,26 +84,26 @@ const ServicesOverview = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-background to-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-       <div className="text-center mb-16 animate-fade-in">
-      <h2 
-        className="font-serif text-4xl md:text-5xl font-bold mb-4"
-        style={{
-          background: 'linear-gradient(135deg, #8B2635 0%, #6B1F2E 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
-        }}
-      >
-        Our Services
-      </h2>
-      <p 
-        className="text-lg max-w-2xl mx-auto leading-relaxed"
-        style={{ color: '#4A4A4A' }}
-      >
-        From traditional to contemporary, we offer a complete range of tailoring services 
-        designed to meet your unique style needs.
-      </p>  
-    </div>
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 
+            className="font-serif text-4xl md:text-5xl font-bold mb-4"
+            style={{
+              background: 'linear-gradient(135deg, #8B2635 0%, #6B1F2E 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
+            Our Services
+          </h2>
+          <p 
+            className="text-lg max-w-2xl mx-auto leading-relaxed"
+            style={{ color: '#4A4A4A' }}
+          >
+            From traditional to contemporary, we offer a complete range of tailoring services 
+            designed to meet your unique style needs.
+          </p>  
+        </div>
 
         {/* Desktop Grid (hidden on mobile) */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -159,7 +156,10 @@ const ServicesOverview = () => {
         <div className="text-center mt-12">
           <Link
             to="/services"
-            className="inline-flex items-center text-accent font-semibold hover:text-gold-dark transition-colors text-lg group"
+            className="inline-flex items-center font-semibold transition-colors text-lg group"
+            style={{ color: '#D4A574' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#B8924E'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#D4A574'}
           >
             View All Services & Pricing
             <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
@@ -170,12 +170,16 @@ const ServicesOverview = () => {
   );
 };
 
-// Separate ServiceCard component for reusability
+// ServiceCard component - Same layout for both mobile and desktop
+// ServiceCard component - Text absolutely positioned at bottom
 const ServiceCard = ({ service, index }: { service: any; index: number }) => {
   return (
     <Card
-      className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-border bg-card animate-scale-in rounded-xl min-h-[300px]"
-      style={{ animationDelay: `${index * 100}ms` }}
+      className="group relative overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 bg-card animate-scale-in rounded-xl min-h-[300px]"
+      style={{ 
+        animationDelay: `${index * 100}ms`,
+        borderColor: 'rgba(212, 165, 116, 0.2)'
+      }}
     >
       {/* Background Image */}
       <div 
@@ -185,7 +189,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
         }}
       />
       
-      {/* Black Vignette Overlay */}
+      {/* Gradient Overlay */}
       <div 
         className="absolute inset-0 transition-all duration-300"
         style={{
@@ -204,23 +208,23 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
         }}
       />
       
-      {/* Content */}
-      <CardContent className="relative z-10 p-8 h-full flex flex-col justify-end">
-     <h3 
-  className="font-serif text-2xl font-semibold mb-3"
-  style={{ 
-    background: 'linear-gradient(135deg, #D4A574 0%, #B8924E 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    textShadow: 'none'
-  }}
->
-  {service.title}
-</h3>
+      {/* Content - ABSOLUTE positioning to lock at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-6 sm:p-8">
+        <h3 
+          className="font-serif text-xl sm:text-2xl font-semibold mb-3"
+          style={{ 
+            background: 'linear-gradient(135deg, #D4A574 0%, #B8924E 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textShadow: 'none'
+          }}
+        >
+          {service.title}
+        </h3>
 
         <p 
-          className="text-white leading-relaxed"
+          className="text-sm sm:text-base text-white leading-relaxed"
           style={{ 
             textShadow: '0 1px 4px rgba(0,0,0,0.6)',
             color: 'rgba(255,255,255,0.95)'
@@ -228,7 +232,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
         >
           {service.description}
         </p>
-      </CardContent>
+      </div>
     </Card>
   );
 };

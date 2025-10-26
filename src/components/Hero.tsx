@@ -116,7 +116,8 @@ const Hero = () => {
 
           {/* Stats section - FIXED: All 3 boxes in single column on mobile, row on desktop */}
       {/* Stats section - FIXED: More top margin on mobile */}
-<div className="mt-8 sm:mt-12 flex flex-row justify-center sm:justify-start gap-3 sm:gap-8 md:gap-12">
+{/* Stats section - FIXED: Less bottom margin for all screen sizes */}
+<div className="mt-6 md:mt-8 lg:mt-10 mb-8 flex flex-row justify-center sm:justify-start gap-3 sm:gap-8 md:gap-12">
   <div 
     className="px-3 py-2 sm:px-4 sm:py-3 rounded-lg flex-1 max-w-[110px] sm:max-w-none" 
     style={{ background: 'rgba(255, 255, 255, 0.1)' }}
@@ -145,6 +146,7 @@ const Hero = () => {
     </div>
   </div>
 </div>
+
 
         </div>
       </div>
